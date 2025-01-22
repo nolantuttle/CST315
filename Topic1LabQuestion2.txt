@@ -1,6 +1,0 @@
-Nolan Tuttle
-1/10/25
-Professor Citro
-Topic 1 Lab Question 2
-
-The registers typically used by system programs to minimize main memory references are control and status registers. Some of these registers include the Program Counter, the Instruction Register, the MAR and MBR. These significantly reduce main memory references, for example the program counter tells the CPU where to fetch the next instruction, this way it doesn't have to access slow main memory each time to look up the address. The Instruction Register holds the fetched instruction, allowing for it to be decoded, also without having to access main memory. Register use is optimized by doing things like keeping frequently used data in registers for quick access, instruction scheduling can be used to ensure all registers are being utilized without any downtime, AKA pipelining. Keeping loop variables in registers can also be a great optimization of register use so that the loop doesn't have to keep accessing main memory.

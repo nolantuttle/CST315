@@ -1,9 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/nolan/Desktop/CST315/testProgram'
-relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z4busyPv, symObjAddr: 0x0, symBinAddr: 0x100003EB8, symSize: 0x2C }
-  - { offsetInCU: 0x42, offset: 0x42, size: 0x8, addend: 0x0, symName: __Z4busyPv, symObjAddr: 0x0, symBinAddr: 0x100003EB8, symSize: 0x2C }
-  - { offsetInCU: 0x6E, offset: 0x6E, size: 0x8, addend: 0x0, symName: __Z5busy1Pv, symObjAddr: 0x2C, symBinAddr: 0x100003EE4, symSize: 0x2C }
-  - { offsetInCU: 0x9A, offset: 0x9A, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x58, symBinAddr: 0x100003F10, symSize: 0x58 }
-...

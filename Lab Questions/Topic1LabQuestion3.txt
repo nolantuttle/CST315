@@ -1,0 +1,6 @@
+Nolan Tuttle
+1/15/25
+Professor Citro
+Topic 1 Lab Question 3
+
+A process executing an application is divided into threads starting from a single thread. An application consists of one or more processes and each process provides the resources needed to run the program. Each process starts with a single primary thread and can create additional threads using any of its threads. Applications can use user-mode scheduling to schedule their own threads which allows switching between threads in user mode, not using the system scheduler. Threads can either run concurrently or in parallel, for example Windows uses concurrency and interleaves threads together to make it appear as if multiple threads are running at one time. After creation, a thread has 6 states; ready, standby, running, waiting, transition, and terminated. Using threads to achieve concurrency within a process is known as multithreading.

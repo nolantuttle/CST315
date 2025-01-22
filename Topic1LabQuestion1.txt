@@ -1,6 +1,0 @@
-Nolan Tuttle
-1/8/25
-Professor Citro
-Topic 1 Lab Question 1
-
-When a new block of data is read into the cache, the cache location it will occupy is determined by the mapping function. The mapping function has two constraints: when one block is read in, another may have to be replaced, and the more flexible the mapping function, the higher the hit ratio, however this will come at the cost of more complex circuitry required to search the cache to determine if a given block is in there. If a block must be replaced, it is common to try to replace the least recently used (LRU), which is the block that has been in the cache the longest with no memory reference to it.	
