@@ -3,16 +3,6 @@
 
 int theProduct;
 
-int get()
-{
-	return 1;
-}
-
-void put(int i)
-{
-	i += 1;
-}
-
 int produce()
 {
 	return theProduct++;
@@ -21,6 +11,16 @@ int produce()
 void consume(int i)
 {
 	printf("%i", i);
+}
+
+int get()
+{
+	return produce();
+}
+
+void put(int i)
+{
+	consume(i);
 }
 
 void producer()
@@ -43,8 +43,29 @@ void consumer()
 	}
 }
 
+void *busy(void *ptr)
+{
+	producer();
+	return NULL;
+}
+
+void *busy1(void *ptr)
+{
+	consumer();
+	return NULL;
+}
+
 int main()
 {
 
-	return 0;
+	pthread_t id;
+	pthread_create(&id, NULL, busy, "Producer"); // this one produces
+
+	pthread_create(&id, NULL, busy1, "Consumer"); // consume!
+
+	while (1)
+	{
+	}
+
+	return 0; // you get 0 back
 }
