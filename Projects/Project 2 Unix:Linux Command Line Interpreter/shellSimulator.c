@@ -3,8 +3,8 @@
 #include <string.h>
 #include <ctype.h>
 
-char *concat(const char *s1, const char *s2)
-{
+// function to concatenate two strings together with a space in the middle
+char *concat(const char *s1, const char *s2){
     char *result = malloc(strlen(s1) + strlen(s2) + 2); // add 2 so there is room
     // for the null terminator character and space
     strcpy(result, s1);
@@ -13,43 +13,47 @@ char *concat(const char *s1, const char *s2)
     return result;
 }
 
-int main()
-{
-    char str[100];
-    char *word1;
-    char *word2;
+// we have to use execv() and fork() to start a child process 
+// we need support for multiple simultaneous commands separated by semicolons
+// ^ this means use wait() and waitpid()
 
-    printf("Enter a command: ");
-    fgets(str, sizeof(str), stdin); // Read input, including spaces
-    str[strcspn(str, "\n")] = 0;    // Remove newline character
+// mannnnnnnnnnnnnn
 
-    word1 = strtok(str, " ");
-    word2 = strtok(NULL, "");
+int main(){
+    char str[100]; // allocate space for input string
+    char *word1;   // first word before whitespace
+    char *word2;   // second word (Everything after first word)
 
-    if (word2 == NULL)
+    while(1)
     {
-        word2 = "";
-    }
+        fgets(str, sizeof(str), stdin); // Read input, including spaces
+        str[strcspn(str, "\n")] = 0;    // Remove newline character
 
-    if (strcmp(word1, "ls") == 0)
-    {
+        word1 = strtok(str, " "); // fetches first word, space delimiter
+        word2 = strtok(NULL, ""); // fetches second word, no delimiter
+
+        // if there is no second word, initializes it to an empty string
+        if (word2 == NULL){
+            word2 = "";
+        }
+
         system(concat(word1, word2)); // concatenates the two words
-    }
-    else if (strcmp(word1, "cd") == 0)
-    {
-        system(concat(word1, word2)); // concatenates the two words
-    }
-    else if (strcmp(word1, "mkdir") == 0)
-    {
-        system(concat(word1, word2)); // concatenates the two words
-    }
-    else if (strcmp(word1, "pwd") == 0)
-    {
-        system(concat(word1, word2)); // concatenates the two words
-    }
-    else if (strcmp(word1, "echo") == 0)
-    {
-        system(concat(word1, word2)); // concatenates the two words
+
+        /* if (strcmp(word1, "ls") == 0){
+            system(concat(word1, word2)); // concatenates the two words
+        }
+        else if (strcmp(word1, "cd") == 0){
+            system(concat(word1, word2)); // concatenates the two words
+        }
+        else if (strcmp(word1, "mkdir") == 0){
+            system(concat(word1, word2)); // concatenates the two words
+        }
+        else if (strcmp(word1, "pwd") == 0){
+            system(concat(word1, word2)); // concatenates the two words
+        }
+        else if (strcmp(word1, "echo") == 0){
+            system(concat(word1, word2)); // concatenates the two words
+        } */
     }
 
     return 0;
