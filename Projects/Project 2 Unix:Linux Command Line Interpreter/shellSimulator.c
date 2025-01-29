@@ -3,54 +3,53 @@
 #include <string.h>
 #include <ctype.h>
 
+char *concat(const char *s1, const char *s2)
+{
+    char *result = malloc(strlen(s1) + strlen(s2) + 2); // add 2 so there is room
+    // for the null terminator character and space
+    strcpy(result, s1);
+    strcat(result, " ");
+    strcat(result, s2);
+    return result;
+}
+
 int main()
 {
-
-    enum Commands
-    {
-        LS,
-        CD,
-        FIND
-    };
-
-    char str[10];
-    char word1[10];
-    char word2[10];
-    int j = 0; // whitespace detection index
+    char str[100];
+    char *word1;
+    char *word2;
 
     printf("Enter a command: ");
     fgets(str, sizeof(str), stdin); // Read input, including spaces
     str[strcspn(str, "\n")] = 0;    // Remove newline character
 
-    word1[0] = '\0';
-    word2[0] = '\0';
+    word1 = strtok(str, " ");
+    word2 = strtok(NULL, "");
 
-    printf("%i", (int)(sizeof(str) / sizeof(char)));
-
-    for (int i = 0; i < (int)(sizeof(str) / sizeof(char)); i++)
+    if (word2 == NULL)
     {
-        if ((int)str[i] == 32)
-        {
-            j = i;
-            break;
-        }
-        word1[i] = str[i];
-    }
-    for (j = j + 1; j < (int)(sizeof(str) / sizeof(char)); j++)
-    {
-        word2[j] = str[j];
+        word2 = "";
     }
 
-    printf("%s\n", word1);
-    printf("%s\n", word2);
-
-    if (strcmp(str, "ls") == 0)
+    if (strcmp(word1, "ls") == 0)
     {
-        system("ls -l");
+        system(concat(word1, word2)); // concatenates the two words
     }
-    else if (strcmp(str, "cd") == 0)
+    else if (strcmp(word1, "cd") == 0)
     {
-        system("cd test");
+        system(concat(word1, word2)); // concatenates the two words
+    }
+    else if (strcmp(word1, "mkdir") == 0)
+    {
+        system(concat(word1, word2)); // concatenates the two words
+    }
+    else if (strcmp(word1, "pwd") == 0)
+    {
+        system(concat(word1, word2)); // concatenates the two words
+    }
+    else if (strcmp(word1, "echo") == 0)
+    {
+        system(concat(word1, word2)); // concatenates the two words
     }
 
     return 0;
