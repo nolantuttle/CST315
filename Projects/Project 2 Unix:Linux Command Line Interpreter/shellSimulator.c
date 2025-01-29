@@ -13,7 +13,7 @@ int main()
         FIND
     };
 
-    char str[100];
+    char str[10];
     char word1[10];
     char word2[10];
     int j = 0; // whitespace detection index
@@ -22,34 +22,27 @@ int main()
     fgets(str, sizeof(str), stdin); // Read input, including spaces
     str[strcspn(str, "\n")] = 0;    // Remove newline character
 
-    printf("%s\n", str);
+    word1[0] = '\0';
+    word2[0] = '\0';
 
-    for (int i = 0; i < sizeof(str) / sizeof(str[0]); i++)
+    printf("%i", (int)(sizeof(str) / sizeof(char)));
+
+    for (int i = 0; i < (int)(sizeof(str) / sizeof(char)); i++)
     {
-        if (isspace(str[i]))
+        if ((int)str[i] == 32)
         {
             j = i;
             break;
         }
-        else
-        {
-            word1[i] = str[i];
-        }
+        word1[i] = str[i];
     }
-    for (j = j + 1; j < sizeof(str) / sizeof(str[0]); j++)
+    for (j = j + 1; j < (int)(sizeof(str) / sizeof(char)); j++)
     {
-        if (isspace(str[j]))
-        {
-            break;
-        }
-        else
-        {
-            word2[j] = str[j];
-        }
+        word2[j] = str[j];
     }
 
     printf("%s\n", word1);
-    printf("%s", word2);
+    printf("%s\n", word2);
 
     if (strcmp(str, "ls") == 0)
     {
