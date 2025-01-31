@@ -26,11 +26,10 @@ int main(){
     char str[100]; // allocate space for input string
     char *word1;   // first word before whitespace
     char *word2;   // second word (Everything after first word)
+    pid_t pid;  // child process variable
 
     while(1)
     {
-
-        pid_t pid = fork(); // create a child process
 
         fgets(str, sizeof(str), stdin); // Read input, including spaces
         str[strcspn(str, "\n")] = 0;    // Remove newline character
@@ -45,10 +44,11 @@ int main(){
 
         //system(concat(word1, word2)); // concatenates the two words
 
+        char* args[] = {"/bin/bash", "-c", concat(word1, word2), NULL};
+
+        pid = fork(); // create a child process
+
         if(pid == 0){
-            printf("in child1\n");
-            char* args[] = {"/bin/bash", "-c", concat(word1, word2), NULL};
-            
             if (execv("/bin/bash",args) == -1)
             {
                 perror("exec failed");
@@ -57,26 +57,8 @@ int main(){
             exit(1);
         }
         else if (pid >0){
-            printf("in parent1\n");
-            int status;
-            waitpid(pid,&status,0);
+            wait(NULL);
         }
-        
-        /* if (strcmp(word1, "ls") == 0){
-            system(concat(word1, word2)); // concatenates the two words
-        }
-        else if (strcmp(word1, "cd") == 0){
-            system(concat(word1, word2)); // concatenates the two words
-        }
-        else if (strcmp(word1, "mkdir") == 0){
-            system(concat(word1, word2)); // concatenates the two words
-        }
-        else if (strcmp(word1, "pwd") == 0){
-            system(concat(word1, word2)); // concatenates the two words
-        }
-        else if (strcmp(word1, "echo") == 0){
-            system(concat(word1, word2)); // concatenates the two words
-        } */
     }
 
     return 0;
