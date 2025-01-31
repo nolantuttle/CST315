@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 // function to concatenate two strings together with a space in the middle
 char *concat(const char *s1, const char *s2){
@@ -26,6 +29,9 @@ int main(){
 
     while(1)
     {
+
+        pid_t pid = fork(); // create a child process
+
         fgets(str, sizeof(str), stdin); // Read input, including spaces
         str[strcspn(str, "\n")] = 0;    // Remove newline character
 
@@ -37,8 +43,25 @@ int main(){
             word2 = "";
         }
 
-        system(concat(word1, word2)); // concatenates the two words
+        //system(concat(word1, word2)); // concatenates the two words
 
+        if(pid == 0){
+            printf("in child1\n");
+            char* args[] = {"/bin/bash", "-c", concat(word1, word2), NULL};
+            
+            if (execv("/bin/bash",args) == -1)
+            {
+                perror("exec failed");
+                return 1;
+            }
+            exit(1);
+        }
+        else if (pid >0){
+            printf("in parent1\n");
+            int status;
+            waitpid(pid,&status,0);
+        }
+        
         /* if (strcmp(word1, "ls") == 0){
             system(concat(word1, word2)); // concatenates the two words
         }
