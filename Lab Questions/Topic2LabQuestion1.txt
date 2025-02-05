@@ -1,0 +1,6 @@
+Nolan Tuttle
+1/22/25
+Professor Citro
+Topic 2 Lab Question 1
+
+When the OS creates another process at the request of another process, it is called process spawning. The process that requested the spawning is known as the parent process and the spawned process is the child process. This spawned process will then be in the New states which is before it has been admitted into the pool of processes being used by the OS. When the OS admits the new process, it will be in the ready state which is when it is prepared to execute, from here it will enter the running state when it is called upon to execute. Then, it can either enter the waiting state and then the ready state once again, or it can go back to the ready state, this cycle will continue until the process is terminated. The parent process has the ability to terminate the child process, so when it is no longer needed it is likely that the parent will remove the process. When the process is in the New state, the OS has time to take care of all actions needed to be able to manage the new process such as creating tables. When it is in this state, it has no space allocated in main memory, only secondary non-volatile storage like a disk. 

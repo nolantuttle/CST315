@@ -17,6 +17,7 @@ int main()
     pthread_t id;
     pthread_create(&id, NULL, busy, (void *)"Hi");
     pthread_create(&id, NULL, busy1, (void *)"Ola");
+    
     while (1)
     {
     }

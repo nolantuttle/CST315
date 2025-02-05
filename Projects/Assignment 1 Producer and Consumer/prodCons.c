@@ -139,11 +139,15 @@ int main()
 
     pthread_t id1, id2;
     pthread_create(&id1, NULL, consumer1, "Consumer"); // this one produces
+    printf("Thread created successfully, thread ID: %lu\n", (unsigned long)id1);
 
     pthread_create(&id2, NULL, producer1, "Producer"); // consume!
+    printf("Thread created successfully, thread ID: %lu\n", (unsigned long)id2);
 
     pthread_join(id1, NULL);
     pthread_join(id2, NULL);
+
+    
 
     // delete mutex after done
     pthread_mutex_destroy(&stack_mutex);
