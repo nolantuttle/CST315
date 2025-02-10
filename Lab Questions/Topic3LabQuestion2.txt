@@ -1,0 +1,7 @@
+Nolan Tuttle
+2/7/25
+Professor Citro
+Topic 3 Lab Question 2
+
+A monitor supports synchronization through achieving mutual exclusion. The way it does this is by only allowing one process to be active in a monitor at any instant. Since it is a high-level programming language construct, it is treated differently by the compiler that other procedure calls. When a monitor procedure is called by a process, it is checked to see if any other processes are running in the monitor currently. If so, the calling process is suspended and must wait, it's up to the compiler to enforce mutual exclusion for a process entering the monitor. When a procedure within a monitor can't proceed, it waits on a condition variable, causing the calling process to block. It then allows a different process to enter the monitor. A signal statement may only appear as the final statement in a monitor procedure because this will wake up the other process that has been sleeping, thus the calling process doing the signal must exit the monitor immediately. Processes that call the procedures within a monitor cannot access the monitor's internal data from outside of the monitor. 
+
