@@ -1,5 +1,5 @@
 Nolan Tuttle & Mathew Hobson	
-2/14/25
+2/16/25
 Professor Citro
 Assignment 2: Monitors and Semaphores
 
@@ -21,7 +21,7 @@ Compilation Instructions:
 
 To compile the semaphores.c program on a Linux/UNIX operating system, use the following command in this directory's terminal:
 
-gcc -o run semaphores.c -lpthread
+gcc -o run semaphores.c
 
 To run the executable program that was generated, run the following command:
 
@@ -30,7 +30,7 @@ To run the executable program that was generated, run the following command:
 
 To compile the monitors.c program on a Linux/UNIX operating system, use the following command in this directory's terminal:
 
-gcc -o run monitors.c -lpthread
+gcc -o run monitors.c
 
 To run the executable program that was generated, run the following command:
 
