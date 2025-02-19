@@ -59,14 +59,15 @@ int main(int argc, char *argv[])
 
 		// splits up the input into semicolon-separated tokens
 		char *command = strtok(str, ";");
-		char *temp = strtok(str, " ");
-		temp = strtok(NULL, " ");
 
 		while (command != NULL)
 		{
 			if (command[0] == 'c' && command[1] == 'd')
 			{
+				char *temp = strtok(command, " ");
+				temp = strtok(NULL, " ");
 				chdir(temp);
+				break;
 			}
 
 			char *args[] = {"/bin/bash", "-c", command, NULL};
