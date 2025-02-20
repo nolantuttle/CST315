@@ -35,13 +35,13 @@ int main(int argc, char *argv[])
 		fclose(file); // Close the batch file
 	}
 
-	printf("<CTRL+X to end execution>\n", NULL);  // Initial prompt
-	printf("<CTRL+B to exit the shell>\n", NULL); // Initial prompt
-	char str[100];								  // Allocate space for input string
+	printf("<CTRL+X to end execution>\n");	// Initial prompt
+	printf("<CTRL+B to exit the shell>\n"); // Initial prompt
+	char str[100];							// Allocate space for input string
 	char currDirectory[100];
 	while (isRunning)
 	{
-		printf("seaShell$ ", NULL);		// Command line prompt
+		printf("seaShell$ ");			// Command line prompt
 		fgets(str, sizeof(str), stdin); // Read input, including spaces
 		str[strcspn(str, "\n")] = 0;	// Remove newline character
 
