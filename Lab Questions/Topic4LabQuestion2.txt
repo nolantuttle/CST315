@@ -1,0 +1,7 @@
+Nolan Tuttle
+2/21/25
+Professor Citro
+Topic 4 Lab Question 2
+
+There are 3 main ways to manage memory, through a bare machine approach, paging, or segmentation strategy. On a machine that has no memory abstraction, programs simply see the actual physical memory available. The big problem with this is that the memory is not private to one process, if two programs run they can both access the same area of memory, causing big problems. IBM fixed this using static relocation, however. Paging allows for programs to view memory as a continuous resource. It divides physical memory into blocks called frames and virtual memory into same size blocks called pages. What's nice about paging is that memory can be assigned if it isn't technically available, a program simply gets virtual memory until the physical memory is available. However, there is still internal fragmentation, meaning that allocated memory may be larger than what was requested. Segmentation strategies involve dividing a program and its data into segments. These don't have to be the same size and contain a segment number and an offset. As opposed to paging, segmentation is usually visible to the users. Segmentation gets rid of the internal fragmentation problem, however it has a few flaws. First, there is a limit on segment size, also there is no simple correlation between real and virtual addresses.
+
