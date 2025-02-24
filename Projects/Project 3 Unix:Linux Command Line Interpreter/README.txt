@@ -1,7 +1,7 @@
 Nolan Tuttle & Mathew Hobson	
-2/9/25
+2/23/25
 Professor Citro
-Project 2: Unix/Linux Command Line Interpreter
+Project 3: Linux Command Line Interpreter
 
 Github Repository Link: https://github.com/nolantuttle/CST315.git
 
