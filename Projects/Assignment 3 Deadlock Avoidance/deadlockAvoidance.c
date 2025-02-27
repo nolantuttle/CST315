@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <semaphore.h>
-#include <fcntl.h>   // For O_CREAT flag
+#include <fcntl.h> // For O_CREAT flag
 #include <sys/types.h>
-#include <unistd.h>  // For fork()
+#include <unistd.h> // For fork()
 #include <sys/wait.h>
 #include <signal.h>
 #include <time.h>
@@ -15,26 +15,24 @@ time_t bruh[NUM_PROCESSES];
 
 pid_t pids[NUM_PROCESSES];
 
-
-void *resource1(void* arg){
+void resource1(void *arg)
+{
     sem_wait(resource_semaphore);
     printf("Resource entered...\n");
     sleep(3);
     printf("Exiting...\n");
     sem_post(resource_semaphore);
-
-
-
 }
-void *resource2(void* arg){
+void resource2(void *arg)
+{
     sem_wait(resource_semaphore);
     printf("Resource entered...\n");
     sleep(3);
     printf("Exiting...\n");
     sem_post(resource_semaphore);
-
 }
-void restart_process(int index) {
+void restart_process(int index)
+{
     printf("Process %d is being restarted...\n", pids[index]);
 
     // Kill the starved process
@@ -43,15 +41,20 @@ void restart_process(int index) {
 
     // Fork a new process to replace the killed one
     pids[index] = fork();
-    if (pids[index] < 0) {
+    if (pids[index] < 0)
+    {
         perror("Fork failed");
         exit(1);
     }
-    else if (pids[index] == 0) { // Child process
+    else if (pids[index] == 0)
+    { // Child process
         printf("New Process %d created to replace starved process.\n", getpid());
-        if (index % 2 == 0) {
+        if (index % 2 == 0)
+        {
             resource1(NULL);
-        } else {
+        }
+        else
+        {
             resource2(NULL);
         }
         exit(0);
@@ -59,24 +62,28 @@ void restart_process(int index) {
 }
 
 // Check for starvation periodically
-void starvation_check(int sig) {
+void starvation_check(int sig)
+{
     printf("\n[Starvation Check] Checking for starved processes...\n");
 
-    for (int i = 0; i < NUM_PROCESSES; i++) {
-        if (time(NULL) - bruh[i] > RESOURCE_TIMEOUT) {
+    for (int i = 0; i < NUM_PROCESSES; i++)
+    {
+        if (time(NULL) - bruh[i] > RESOURCE_TIMEOUT)
+        {
             restart_process(i);
         }
     }
 
-    alarm(RESOURCE_TIMEOUT);  // Reset starvation timer
+    alarm(RESOURCE_TIMEOUT); // Reset starvation timer
 }
 
-
-int main() {
+int main()
+{
     // Initialize semaphore
 
     resource_semaphore = sem_open("/resource_semaphore", O_CREAT, 0644, 1);
-    if (resource_semaphore == SEM_FAILED) {
+    if (resource_semaphore == SEM_FAILED)
+    {
         perror("Semaphore initialization failed");
         exit(1);
     }
@@ -88,20 +95,26 @@ int main() {
     alarm(RESOURCE_TIMEOUT); // Start first starvation timer
 
     // Create multiple processes
-    for (int i = 0; i < NUM_PROCESSES; i++) {
+    for (int i = 0; i < NUM_PROCESSES; i++)
+    {
         pids[i] = fork();
 
-        if (pids[i] < 0) {
+        if (pids[i] < 0)
+        {
             perror("Fork failed");
             exit(1);
         }
-        else if (pids[i] == 0) { // Child process
+        else if (pids[i] == 0)
+        { // Child process
             printf("Process %d created.\n", getpid());
-            if (i % 2 == 0) {
+            if (i % 2 == 0)
+            {
                 bruh[i] = time(NULL);
 
                 resource1(NULL);
-            } else {
+            }
+            else
+            {
                 bruh[i] = time(NULL);
 
                 resource2(NULL);
@@ -111,7 +124,8 @@ int main() {
     }
 
     // Parent waits for processes but also checks for starvation
-    while (1) {
+    while (1)
+    {
         wait(NULL);
     }
 
