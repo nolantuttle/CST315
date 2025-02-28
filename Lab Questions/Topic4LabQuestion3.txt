@@ -1,0 +1,6 @@
+Nolan Tuttle
+2/26/25
+Professor Citro
+Topic 4 Lab Question 3
+
+When paging is used to manage memory, a process that is brought in has all of its pages loaded into available frames and gets a page table. The hardware that supports paging has two parts: a page number and a page offset. The page number is used as an index into this page table, which contains the base address for each page in physical memory. The page offset is combined with this base address to find the physical memory address. A page is brought back to main memory when it is available, otherwise it is allocated virtual memory. Let us say we have a 16-bit logical address with the first 6 bits being the page number, lets say 000001 for page number 1. The next 10 bits will be used for the offset, let's say it is 1000110110, which is 566 in binary. Since the page number is 1, the page table will be accessed at index 1 and the 6-bit base address will be accessed and added to the offset 566. Let's say this 6-bit base address is 101010, this added to the offset to give 1010101000110110 for the physical address.
