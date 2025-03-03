@@ -45,7 +45,7 @@ void *process1(void *args)
             start_time = time(NULL);
             active_thread = pthread_self();
             active_thread_id = thread_id;
-            active_thread_timed_out = 0;  // Reset timeout flag
+            active_thread_timed_out = 0; // Reset timeout flag
 
             printf("Thread %d write: writing...\n", thread_id);
             // Simulate work: sleep for a random time between 1 and 10 seconds.
@@ -53,7 +53,8 @@ void *process1(void *args)
             shared_resource = rand() % 10 + 1;
 
             // If a timeout was signaled for the active thread, exit.
-            if (active_thread_timed_out && active_thread_id == thread_id) {
+            if (active_thread_timed_out && active_thread_id == thread_id)
+            {
                 printf("Thread %d detected timeout, releasing resource and exiting.\n", thread_id);
                 pthread_mutex_unlock(&mutex);
                 break;
