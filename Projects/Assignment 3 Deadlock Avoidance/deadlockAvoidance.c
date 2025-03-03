@@ -17,35 +17,42 @@ int active_thread_id = 0;
 // (Only the active thread will check this flag.)
 volatile int active_thread_timed_out = 0;
 
+// Flags to track whether worker threads are running.
+volatile int thread1_running = 0;
+volatile int thread2_running = 0;
+
 void *process1(void *args)
 {
     int thread_id = *((int *)args);
-    // Let threads start a little later
+    // Mark the thread as running.
+    if (thread_id == 1)
+        thread1_running = 1;
+    else if (thread_id == 2)
+        thread2_running = 1;
+
+    // Let threads start a little later.
     sleep(1);
     int attempts = 1;
 
     while (1)
     {
-        // If this thread is not active and a timeout has been signaled,
-        // we want it to continue trying normally.
         printf("Thread %d is attempting to access the resource.\n", thread_id);
         int lock_status = pthread_mutex_trylock(&mutex);
         if (lock_status == 0)
         {
-            // We acquired the mutex, so this thread is now the active thread.
             attempts = 1;
             printf("||---Thread %d has gained access to the resource.---||\n", thread_id);
             start_time = time(NULL);
             active_thread = pthread_self();
             active_thread_id = thread_id;
-            active_thread_timed_out = 0;  // Reset flag upon acquiring resource
+            active_thread_timed_out = 0;  // Reset timeout flag
 
             printf("Thread %d write: writing...\n", thread_id);
-            // Simulate work (sleep for a random time between 1 and 10 seconds)
+            // Simulate work: sleep for a random time between 1 and 10 seconds.
             sleep(rand() % 10 + 1);
             shared_resource = rand() % 10 + 1;
 
-            // Check if this active thread has been signaled to stop
+            // If a timeout was signaled for the active thread, exit.
             if (active_thread_timed_out && active_thread_id == thread_id) {
                 printf("Thread %d detected timeout, releasing resource and exiting.\n", thread_id);
                 pthread_mutex_unlock(&mutex);
@@ -65,6 +72,12 @@ void *process1(void *args)
     }
 
     printf("Thread %d was stopped, exiting.\n", thread_id);
+    // Mark the thread as no longer running.
+    if (thread_id == 1)
+        thread1_running = 0;
+    else if (thread_id == 2)
+        thread2_running = 0;
+
     return NULL;
 }
 
@@ -83,8 +96,6 @@ void *watchdog(void *args)
         {
             printf(" ~ Watchdog: Timeout for thread %d. Requesting release. ~ \n", active_thread_id);
             active_thread_timed_out = 1;
-            // We don't forcefully unlock the mutex here;
-            // instead, the active thread will check the flag and exit after finishing its work.
         }
     }
     return NULL;
@@ -92,26 +103,35 @@ void *watchdog(void *args)
 
 int main()
 {
-    pthread_t id1, id2, id3;
-    int thread_id1 = 1, thread_id2 = 2, thread_id3 = 3;
+    pthread_t worker1, worker2, wd;
+    int id1 = 1, id2 = 2, wd_id = 3;
 
-    // Create two worker threads.
-    pthread_create(&id1, NULL, process1, &thread_id1);
-    pthread_create(&id2, NULL, process1, &thread_id2);
-    // Create the watchdog thread.
-    pthread_create(&id3, NULL, watchdog, &thread_id3);
+    // Start the watchdog thread.
+    pthread_create(&wd, NULL, watchdog, &wd_id);
 
-    // Wait for the worker threads to exit.
-    pthread_join(id1, NULL);
-    pthread_join(id2, NULL);
+    // Initially create worker threads.
+    pthread_create(&worker1, NULL, process1, &id1);
+    pthread_create(&worker2, NULL, process1, &id2);
 
-    // In this example, the watchdog runs in an infinite loop.
-    // Once the workers have exited, we can cancel it.
-    pthread_cancel(id3);
-    pthread_join(id3, NULL);
+    // Manager loop: continuously monitor and restart threads if they exit.
+    while (1)
+    {
+        sleep(1);
+        if (!thread1_running)
+        {
+            printf("Restarting thread 1.\n");
+            pthread_create(&worker1, NULL, process1, &id1);
+        }
+        if (!thread2_running)
+        {
+            printf("Restarting thread 2.\n");
+            pthread_create(&worker2, NULL, process1, &id2);
+        }
+    }
 
+    // Cleanup (unreachable in this endless loop, but provided for completeness).
+    pthread_cancel(wd);
+    pthread_join(wd, NULL);
     pthread_mutex_destroy(&mutex);
-
-    printf("All threads have exited. Program terminating.\n");
     return 0;
 }
