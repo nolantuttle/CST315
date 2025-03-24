@@ -1,0 +1,8 @@
+Frame 0: 0101
+Frame 1: 
+Frame 2: 0100
+Frame 3: 
+Frame 4: 1111
+Frame 5: 
+Frame 6: 
+Frame 7: 0111
