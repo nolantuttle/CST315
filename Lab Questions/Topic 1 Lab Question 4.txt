@@ -1,0 +1,6 @@
+Nolan Tuttle
+1/17/25
+Professor Citro
+Topic 1 Lab Question 4
+
+The mechanism that allows programs to address memory without regard to physical memory available is virtual memory. This allows for processes to each be comprised of a number of fixed-size blocks called pages. Each page can be located anywhere in main memory, and this system allows for dynamic mapping between the virtual address (used by the progfram) and the physical address. When a process executes, if a reference is made to a page that isn't in main memory, it is set up to be loaded into memory by the memory management unit (MMU). All of the pages of a process are kept on disk. Using virtual addresses in coordination with the MMU, it appears to the program using virtual addressing that it can access memory continuously in a way that isn't limited by the physical memory of the computer.

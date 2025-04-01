@@ -1,0 +1,6 @@
+Nolan Tuttle
+2/19/25
+Professor Citro
+Topic 4 Lab Question 1
+
+When a process tries to store data beyond the limits of a fixed-size buffer, it may overwrite memory locations next to the buffer it was trying to write to. This can corrupt data used by the program, give unexpected permissions/transfer control to the wrong users, memory access violations and may cause the program to crash. This can be used by an attacker trying to execute their own code when they don't have permission, causing a buffer overflow like this may help them transfer control over to themselves so that they can run their own code in the adjacent memory that isn't meant to be accessed. The adjacent memory that is overwritten can hold a variety of things unrelated to the program such as variables for other programs and return addresses, so overwriting them can cause unexpected behaviors elsewhere in the operating system and is very dangerous.

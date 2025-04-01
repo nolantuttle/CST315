@@ -1,0 +1,7 @@
+Nolan Tuttle
+1/31/25
+Professor Citro
+Topic 2 Lab Question 4
+
+Probably the most popular way to prevent threads from interfering with one another is through the use of a mutex. A mutex is a lock that enforces mutual exclusion of data, meaning that when a thread is writing or reading data, the mutex can be used to lock that data so that it might only be accessed by the thread reading/writing and no other thread. Another way is through using semaphores, which can also control access to a resource shared by multiple threads, however in a slightly different way. A semaphore allows a specific number of threads to access a resource concurrently, but once this number of threads reaches 0, no further threads can access the resource until the count is increased again. So semaphores are more about limiting the amount of threads while a mutex is more about limiting corruption of a shared resource. It's important to avoid threads having a race condition where they try to access the same resource at the same time or a condition where threads wait on one another indefinitely.
+

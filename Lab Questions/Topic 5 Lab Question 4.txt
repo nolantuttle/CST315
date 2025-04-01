@@ -1,0 +1,6 @@
+Nolan Tuttle
+3/21/25
+Professor Citro
+Topic 5 Lab Question 4
+
+Priority inversion is a phenomenon that occurs when a higher priority task must wait for a lower priority one. This can occur from a shared resource being locked, something like a binary semaphore from a lower priority task might lock a resource that a higher priority one needs to be able to execute, thus requiring the lower priority to be done first. Unbounded priorit inversion is when this issue becomes much more serious, where the duration of the inversion not only depends on the time required to handle the shared ersource, but the actions that other tasks will take as well. This can result in serious data loss, system resets, etc. One common method of solving this issue is priority inheritance, which is the concept of lower priority tasks ing3eriting the priority of any higher-priority task waiting for a shared resource. This priority inheritance starts when the higher priority task blocks the resource and ends when the resource is released by the lower priority task. This way, there is no unbounded priority inversion and the higher priority task can preempt the lower one, getting the more essential process completed quicker.

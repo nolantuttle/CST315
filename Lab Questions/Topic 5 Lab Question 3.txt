@@ -1,0 +1,6 @@
+Nolan Tuttle
+3/19/25
+Professor Citro
+Topic 5 Lab Question 3
+
+If an operating system experiences sudden failure, there are some ways of keeping data intact and preserving system capabilities. A fail-soft operation is a characteristic that describes how a system might fail to preserve as much of these two things as possible. On a UNIX system, if corrupted data in the kernel is found, all the memory is dumped to the disk and a failure message is issued as well as the system being terminated. Its important to emphasize in real-time systems that try to maintain data and capabilities like this that the system should be stable. A stable system will, despite not being able to complete all tasks that are scheduled, can still complete the critical high-priority tasks like dumping the memory when corruption is found. These things are especially important in real-time systems because they must dynamically change according to events in real time, meaning that a catastrophic failure could lose a company thousands of dollars or cause serious equipment damage. No matter what though, if a shutdown must occur in the operating system, it should attempt to dump the memory to secondary storage to preserve data consistency.

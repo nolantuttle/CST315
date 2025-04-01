@@ -1,0 +1,6 @@
+Nolan Tuttle
+2/12/25
+Professor Citro
+Topic 3 Lab Question 3
+
+According to the textbook, Linux provides 3 types of semaphore facilities in the kernel, binary semaphores, counting semaphores, and reader-writer semaphores. To initialize these semaphores, you can use sema_init(), init_MUTEX(), or init_rwsem() depending on which one you want. When creating a counting semaphore, you can specify a specific count that you want the semaphore to start with. With the mutex initialization, also known as a binary semaphore, you can specify whether it starts off as unlocked (1) or locked (0). Reader-writer semaphores divide users into readers and writers, allowing multiple concurrent readers with no writers or a single writer with no concurrent readers. While the writer has the lock, readers are blocked and this is particularly useful when you need lots of readers but few writers. Similar to the methods available for use with mutexes, you can call read_lock(), read_unlock(), and the same goes for the writer methods. 

@@ -1,0 +1,6 @@
+Nolan Tuttle
+3/28/25
+Professor Citro
+Topic 6 Lab Question 2
+
+Two RAID configurations are RAID 1 and 2. RAID 1 has to do with mirroring, that is, it mirrors data across hard drives by copying it, making each piece of data identical across the drives. RAID 2 is used in parallel access situations, since it separates bits using bit-level striping and spreads that across multiple drives, one drive per bit. This means its good to be able to access many of these at once, and it was designed to improve data reliability, but in practice this one is rarely used. RAID 1 is much more likely to be used because its reliable, and data redundancy is high priority, however in sitations where large storage is needed another RAID configuration should be chosen.

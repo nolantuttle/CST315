@@ -1,0 +1,6 @@
+Nolan Tuttle
+2/5/25
+Professor Citro
+Topic 3 Lab Question 1
+
+Semaphores can perform three essential operations: initialization, up (otherwise known as signal()) and down (otherwise known as wait()). Initialization is self-explanatory, it initializes a new semaphore and allocates some space in memory for it. The semaphore works by holding an integer value that can be incremented and decremented using up and down respectively. The idea behind a semaphore is that for each process that accesses a shared resource, the semaphore will decrement its integer value until it reaches 0, at which point it will not be accessible until one of the processes finishes and goes to sleep. A semaphore that only has values 0 and 1 is also known as a mutex lock, this type of semaphore only allows one process to access a shared resource at one time. In essence, this variable counts the number of wakeups saved for future use. When the down operation is used, the semaphore will check if the variable > 0. Checking this variable, incrementing/decerementing it, and going to sleep is all done as a single atomic action, meaning that once a semaphore operation starts, no other process can access the semaphore until the operation has completed or blocked.

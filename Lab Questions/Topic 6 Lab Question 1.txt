@@ -1,0 +1,6 @@
+Nolan Tuttle
+3/26/25
+Professor Citro
+Topic 6 Lab Question 1
+
+A file descriptor is an integer that uniquely identifies a file within a process. When a process accesses a file, the file descriptor is assigned and is used when the process chooses to read, write, etc. with the file. Each process has a file descriptor table which keeps a list of files that the process can use. This file descriptor is very useful because it lets processes communicate with the kernel, telling it which file is being modified. A symbol table is very useful in conjunction with this because it allows for directory management, taking symbolic file names that can be converted to identifiers that can reference the file directly or indirectly through a file descriptor or index table. Symbol tables keep track of all of these symbolic file names so that this conversion process can be quicker and more organized. For example, if trying to open a file, the kernel will look up the file and retrieve its metadata using the symbol table. Then, it will assign a file descriptor to the file.

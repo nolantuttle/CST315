@@ -1,0 +1,6 @@
+Nolan Tuttle
+1/24/25
+Professor Citro
+Topic 2 Lab Question 2
+
+When a process is not running, if it was interrupted all of its register information must be saved. The processor state information is all of these registers that save this information. Within the processor state registers is the status information which includes flags for whether external interrupts will be recognized or not, this can be done using virtual memory or just normally. If the process was stopped by an interrupt, an interrupt flag can be set to tell the processor that an interrupt is awaiting service.

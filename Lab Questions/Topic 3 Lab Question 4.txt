@@ -1,0 +1,6 @@
+Nolan Tuttle
+2/14/25
+Professor Citro
+Topic 3 Lab Question 4
+
+An executable entity within a process is known as a thread. One good example of the usefulness of threads is if they're used for I/O handling, if you have a process that receives some kind of input, like a UI for a website, and request handling stuff also needs to be taken care of, threads will make this process more efficient. This is because threads run concurrently, meaning that the CPU won't have to run one process at a time and be constantly hung up on I/O handling. The main benefits of using threads are for their performance benefits, its more lightweight to use than a process so sometimes creating multiple threads inside of a process can be much less taxing on the computer's resources. There are numerous other advantages such as quicker termination, faster switching, etc.

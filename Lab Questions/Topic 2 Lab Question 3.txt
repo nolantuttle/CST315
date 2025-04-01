@@ -1,0 +1,6 @@
+Nolan Tuttle
+1/29/25
+Professor Citro
+Topic 2 Lab Question 2
+
+Operating systems usually contain two forms of concurrent activity, processes and threads. These both cooperate in order to manage shared data structures by enforcing mutual exclusion (this can be done through a mutex) and by doing this they synchronize their execution. Threads can be utilized to separate things into different concurrent executions, something like an interrupt could be taken care of by a thread with some allocated resources to reduce overhead. A process can simply be called an instance of a program. Multiple processes can share the CPU through scheduling techniques. A thread is just a small bit of execution within a process, a process can have multiple threads that share the same memory.

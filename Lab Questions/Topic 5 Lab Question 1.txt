@@ -1,0 +1,6 @@
+Nolan Tuttle
+3/5/25
+Professor Citro
+Topic 5 Lab Question 1
+
+The scheduler can estimate processing time for processes by collecting data from commonly run processes. One simple calculation is to get the average burst for each process, but a common technique for using these burst times to predict a future value for processing time is called exponential averaging. This method of processing time estimating typically favors bursts that occured more recently as those are more likely to reflect future bursts. However, using processing time estimation is not always a great idea because if a process turns out to be longer than expected, it may exit before completing because it was not allocated enough processing time or because it was low priority because of its burst length, leading to process starvation. One technique for completing a starved process is aging, meaning the longer a process sits without being serviced by the processor, the higher priority it becomes. This way in scheduling algorithms like shortest-job first the longer processes won't be starved indefinitely. 
