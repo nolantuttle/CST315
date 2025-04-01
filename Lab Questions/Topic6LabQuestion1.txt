@@ -1,0 +1,6 @@
+Nolan Tuttle
+3/26/25
+Professor Citro
+Topic 6 Lab Question 1
+
+File descriptors and symbol tables are important tools utilized in directory management.

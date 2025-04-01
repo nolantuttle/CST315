@@ -1,0 +1,6 @@
+Nolan Tuttle
+3/7/25
+Professor Citro
+Topic 5 Lab Question 2
+
+In a UNIX-based system, processes are assigned a priority according to the priority scheduling algorithm. This ensures that the scheduler always picks a process with a higher priority over one with a lower priority, giving fast service to processes that require it. Larger priority values for a process represent lower priority in UNIX. For each priority level there is a queue of processes, which can become an issue if high priority processes are constantly being serviced, leading to starvation of lower priority processes which are never able to be serviced. This helps scheduling in the OS meet the response time criteria.

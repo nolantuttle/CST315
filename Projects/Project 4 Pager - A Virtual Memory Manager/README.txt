@@ -1,7 +1,7 @@
 Nolan Tuttle & Mathew Hobson	
-2/23/25
+3/23/25
 Professor Citro
-Project 3: Linux Command Line Interpreter
+Project 4: Pager – A Virtual Memory Manager
 
 Github Repository Link: https://github.com/nolantuttle/CST315.git
 
@@ -21,17 +21,11 @@ Compilation Instructions:
 
 To compile the seaShell program on a Linux/UNIX operating system, use the following command in this directory's terminal:
 
-gcc -o seaShell seaShell.c 
+gcc -o pager pager.c 
 
 
 Running the Program:
 
 To run the executable program that was generated, run the following command:
 
-./seaShell
-
-To execute the included batch file batchfile.sh, include the filename in the run command as shown below:
-
-./seaShell batchfile.sh
-
-This will run the batch file before the command line prompt appears.
+./pager
