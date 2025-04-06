@@ -69,6 +69,21 @@ int main(int argc, char *argv[])
 				chdir(temp);
 				break;
 			}
+			// If command matches procs prints out basic info of processes using ps command, sorts by k2 which is column 2(user)
+			else if(strcmp(command, "procs")==0){
+				system("ps -eo pid,user,stat,comm |sort -k2"); 
+			}
+
+			// prints out more advanced info and sorts by column 4(cpu percentage) in number reverse order (least to greatest)
+			else if(strcmp(command, "procs -a")==0){
+				system("ps -eo pid,ppid,user,%cpu,%mem,vsz,rss,tty,stat,start,time,command|sort -k4 -nr");
+			}
+
+			// same as above command but sorts numerically by process id
+			else if(strcmp(command,"procs -a -si") == 0){
+				system("ps -eo pid,ppid,user,%cpu,%mem,vsz,rss,tty,stat,start,time,command");
+			}
+			
 
 			char *args[] = {"/bin/bash", "-c", command, NULL};
 
