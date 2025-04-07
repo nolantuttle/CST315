@@ -1,0 +1,6 @@
+Nolan Tuttle
+4/2/25
+Professor Citro
+Topic 6 Lab Question 3
+
+General purpose I/O capability for records is provided through a Logical I/O module. This module also maintains basic data about files by doing this. It does not focus on actually controlling the device it is within, but with mapping I/O functions to user processes, using device identifiers and commands to allow the user to use I/O effectively and intuitively. 
