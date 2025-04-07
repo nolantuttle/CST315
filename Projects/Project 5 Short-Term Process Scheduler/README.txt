@@ -1,7 +1,7 @@
 Nolan Tuttle & Mathew Hobson	
-2/23/25
+4/6/25
 Professor Citro
-Project 3: Linux Command Line Interpreter
+Project 5: Short-Term Process Scheduler
 
 Github Repository Link: https://github.com/nolantuttle/CST315.git
 
@@ -21,17 +21,14 @@ Compilation Instructions:
 
 To compile the seaShell program on a Linux/UNIX operating system, use the following command in this directory's terminal:
 
-gcc -o seaShell seaShell.c 
+gcc -o run seaShell.c 
 
 
 Running the Program:
 
 To run the executable program that was generated, run the following command:
 
-./seaShell
+./run
 
-To execute the included batch file batchfile.sh, include the filename in the run command as shown below:
 
-./seaShell batchfile.sh
-
-This will run the batch file before the command line prompt appears.
+It is important to note that we added 3 demonstration processes that run idly: "sleep 2", "echo idle1 > /dev/null", and "sleep 4". When a command is entered, it will be put at the end of the queue with these commands in front, showing the process table each time a context switch is performed. Also, the ‘procs’ command will run and then exit the program when used.
