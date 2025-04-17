@@ -6,42 +6,19 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-// argc is the argument count, if they give 1 then a batch file is provided
-int main(int argc, char *argv[])
+// main loop
+int main()
 {
+	system("clear");
 	int isRunning = 1; // Running condition for command line
-	if (argc == 2)	   // Condition for batch file usage
-	{
-		// Get the filepath to batch file from argument 1
-		char *batch_file = argv[1];
 
-		// Open the batch file
-		FILE *file = fopen(batch_file, "r");
-		char str[100]; // Allocate space for input string
-
-		while (fgets(str, sizeof(str), file))
-		{
-			str[strcspn(str, "\n")] = 0; // Remove newline character
-
-			// Skip empty lines/comments
-			if (str[0] == '\0' || str[0] == '#')
-			{
-				continue;
-			}
-
-			system(str); // Runs current line being read in batch file
-		}
-
-		fclose(file); // Close the batch file
-	}
-
-	printf("<CTRL+X to end execution>\n");	// Initial prompt
-	printf("<CTRL+B to exit the shell>\n"); // Initial prompt
-	char str[100];							// Allocate space for input string
+	printf("<CTRL+X to end execution>\n");	  // Initial prompt
+	printf("<CTRL+B to exit the shell>\n\n"); // Initial prompt
+	char str[100];							  // Allocate space for input string
 	char currDirectory[100];
 	while (isRunning)
 	{
-		printf("seaShell$ ");			// Command line prompt
+		printf("citroShell$ ");			// Command line prompt
 		fgets(str, sizeof(str), stdin); // Read input, including spaces
 		str[strcspn(str, "\n")] = 0;	// Remove newline character
 
