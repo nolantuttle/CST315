@@ -1,0 +1,6 @@
+Nolan Tuttle
+4/4/25
+Professor Citro
+Topic 6 Lab Question 4
+
+Three types of file allocation are known as contiguous, chained, and indexed. In the case of contiguous allocation, something called preallocation is required, which is a policy requiring that the maximum size of a file will be declared when a file creation request is sent. This is a difficult prediction to make for the programmer which can often cause them to choose dynamic allocation instead. While contiguous file allocation, which allocates a single contiguous set of blocks to a file at the time of its creation, chained and indexed allocation do not require preallocation and dynamic allocation can be used, which guesses the file size using data it already has instead of it being declared. Chained allocation works by each block having a pointer to the next block in the chain. For indexed allocation, the file allocation table contains indices for the files to be allocated. It comes down to whether or not you want large or small portions, which are contiguous sets of allocated blocks, and whether or not you have to allocate files often and quickly. 

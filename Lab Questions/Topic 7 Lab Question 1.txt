@@ -1,0 +1,6 @@
+Nolan Tuttle
+4/9/25
+Professor Citro
+Topic 7 Lab Question 1
+
+Data exchanges between a client and an underlying resource are facilitated in a multitude of ways. Since it would be an unsafe design to have the client directly accessing the hardware, applications run in user-space while the operating system and device drivers operate in kernel-space. If a program running in user space requires access to a certain bit of hardware, a system call is made, switching the context from user-mode to kernel-mode. Some external resources like printers or disks can be accessed through device drivers that will map user commands to hardware. Primarily system calls from user-space requesting kernel access are the most common way for clients to access resources in an operating system context, this way the OS can remain secure but also stable.
